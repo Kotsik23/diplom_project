@@ -3,10 +3,10 @@ import { ROUTE } from "@/src/lib/routes.ts"
 export const navbarData = [
 	{
 		label: "About Us",
-		href: ROUTE.HOME,
+		href: ROUTE.ABOUT_US,
 	},
 	{
 		label: "Explore",
-		href: ROUTE.HOME,
+		href: ROUTE.EXPLORE,
 	},
 ]
