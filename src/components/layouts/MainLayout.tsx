@@ -1,8 +1,10 @@
-import { Navbar } from "@/src/modules/navbar"
+import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 import { useConvexAuth } from "convex/react"
+
+import { Navbar } from "@/src/modules/navbar"
+
 import { SplashScreen } from "@/src/components/splash-screen/SplashScreen.tsx"
-import { Suspense } from "react"
 
 export const MainLayout = () => {
 	const { isLoading } = useConvexAuth()

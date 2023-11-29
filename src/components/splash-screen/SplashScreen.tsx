@@ -11,7 +11,9 @@ export const SplashScreen = () => {
 			<img
 				alt={"splash-logo"}
 				src={isDesktop ? LogoBig : LogoMini}
-				className={"animate-in fade-in-0 zoom-in-95 w-full max-w-lg duration-500"}
+				className={
+					"animate-in fade-in-0 zoom-in-95 animate-splash-ping w-full max-w-lg duration-500"
+				}
 			/>
 		</main>
 	)

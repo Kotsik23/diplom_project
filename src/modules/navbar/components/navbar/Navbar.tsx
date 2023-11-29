@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom"
 import { useMediaQuery } from "usehooks-ts"
-import { SignUpButton, UserButton } from "@clerk/clerk-react"
+import { SignUpButton } from "@clerk/clerk-react"
 import { Authenticated, Unauthenticated } from "convex/react"
 
 import LogoBig from "@/src/assets/logo.svg"
@@ -8,6 +8,7 @@ import LogoMini from "@/src/assets/logo_mini.svg"
 
 import { navbarData } from "@/src/modules/navbar/constants/navbar-data.ts"
 
+import { UserButton } from "@/src/components/user-button/UserButton"
 import { Button } from "@/src/components/ui/button.tsx"
 
 import { ROUTE } from "@/src/lib/routes.ts"
