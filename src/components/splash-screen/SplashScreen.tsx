@@ -1,18 +1,13 @@
-import { useMediaQuery } from "usehooks-ts"
-
-import LogoBig from "@/src/assets/logo.svg"
-import LogoMini from "@/src/assets/logo_mini.svg"
+import LogoLight from "@/src/assets/logo_light.svg"
 
 export const SplashScreen = () => {
-	const isDesktop = useMediaQuery("(min-width: 768px)")
-
 	return (
 		<main className={"fixed inset-0 grid h-screen w-screen place-items-center"}>
 			<img
 				alt={"splash-logo"}
-				src={isDesktop ? LogoBig : LogoMini}
+				src={LogoLight}
 				className={
-					"animate-in fade-in-0 zoom-in-95 animate-splash-ping w-full max-w-lg duration-500"
+					"animate-splash-ping w-full max-w-lg duration-500 animate-in fade-in-0 zoom-in-95"
 				}
 			/>
 		</main>
