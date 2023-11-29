@@ -13,6 +13,7 @@ import { Button } from "@/src/components/ui/button.tsx"
 
 import { ROUTE } from "@/src/lib/routes.ts"
 import { cn } from "@/src/lib/utils.ts"
+import { MobileMenu } from "@/src/modules/navbar/components/mobile-menu/MobileMenu.tsx"
 
 export const Navbar = () => {
 	const isDesktop = useMediaQuery("(min-width: 768px)")
@@ -20,10 +21,13 @@ export const Navbar = () => {
 	return (
 		<header className={"border-border border-b bg-white/80 shadow-sm"}>
 			<div className={"container flex items-center justify-between py-2"}>
+				<div className={"block md:hidden"}>
+					<MobileMenu />
+				</div>
 				<Link to={ROUTE.HOME}>
 					<img alt={"logo"} src={isDesktop ? LogoBig : LogoMini} className={"w-12 md:w-52"} />
 				</Link>
-				<nav>
+				<nav className={"hidden md:block"}>
 					<ul className={"flex items-center gap-16"}>
 						{navbarData.map(link => (
 							<li
