@@ -5,7 +5,8 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-react"
 import { Routing } from "@/src/pages"
 
 import "./globals.css"
-import { Toaster } from "sonner"
+import { ThemeProvider } from "@/src/app/providers/ThemeProvider.tsx"
+import { WithThemeToaster } from "@/src/app/providers/WithThemeToaster.tsx"
 
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -19,8 +20,10 @@ export const App = () => {
 	return (
 		<ClerkProvider publishableKey={publishableKey}>
 			<ConvexProviderWithClerk client={client} useAuth={useAuth}>
-				<Routing />
-				<Toaster position={"bottom-center"} closeButton richColors duration={4000} />
+				<ThemeProvider>
+					<Routing />
+					<WithThemeToaster />
+				</ThemeProvider>
 			</ConvexProviderWithClerk>
 		</ClerkProvider>
 	)

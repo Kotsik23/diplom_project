@@ -5,6 +5,7 @@ import { toast } from "sonner"
 import { ConvexError } from "convex/values"
 import { Button } from "@/src/components/ui/button.tsx"
 import { useState } from "react"
+import { useTheme } from "@/src/app/providers/ThemeProvider.tsx"
 
 export default function ExplorePage() {
 	const [completion, setCompletion] = useState<string | undefined | null>(null)
@@ -24,10 +25,14 @@ export default function ExplorePage() {
 		})
 	}
 
+	const { setTheme } = useTheme()
+
 	return (
 		<main className={"container mt-10 flex gap-14"}>
 			<FiltersSidebar />
 			<Button onClick={handleCompletion}>Start completion</Button>
+			<Button onClick={() => setTheme("dark")}>Dark</Button>
+			<Button onClick={() => setTheme("light")}>Light</Button>
 			{completion && <p className={"p-4 text-left text-base"}>{completion}</p>}
 		</main>
 	)
