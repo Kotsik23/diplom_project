@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/ui/card.tsx"
+import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card.tsx"
+import { CategoriesFilter } from "@/src/modules/filters"
 
 export const FiltersSidebar = () => {
 	return (
@@ -6,7 +7,9 @@ export const FiltersSidebar = () => {
 			<CardHeader className={"p-4"}>
 				<CardTitle className={"text-xl"}>Filter By</CardTitle>
 			</CardHeader>
-			<CardContent className={"p-4"}></CardContent>
+			<CardContent className={"p-4"}>
+				<CategoriesFilter />
+			</CardContent>
 		</Card>
 	)
 }
