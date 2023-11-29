@@ -3,7 +3,7 @@ import { CategoriesFilter } from "@/src/modules/filters"
 
 export const FiltersSidebar = () => {
 	return (
-		<Card className={"basis-80"}>
+		<Card className={"shrink-0 basis-80"}>
 			<CardHeader className={"p-4"}>
 				<CardTitle className={"text-xl"}>Filter By</CardTitle>
 			</CardHeader>
