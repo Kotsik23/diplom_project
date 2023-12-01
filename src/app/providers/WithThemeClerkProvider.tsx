@@ -21,6 +21,7 @@ export const WithThemeClerkProvider = ({ children }: { children: ReactNode }) =>
 				variables: {
 					colorPrimary: isDark ? "hsl(213,93%,67%)" : "hsl(218,91%,60%)",
 					colorBackground: isDark ? "hsl(240, 10%, 3.9%)" : "hsl(0, 0%, 100%)",
+					colorDanger: isDark ? "hsl(0, 72.8%, 60.6%)" : "hsl(0, 84.2%, 60.2%)",
 					borderRadius: "0.5rem",
 				},
 				layout: {
