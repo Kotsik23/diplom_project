@@ -5,6 +5,7 @@ import { useConvexAuth } from "convex/react"
 import { Navbar } from "@/src/modules/navbar"
 
 import { SplashScreen } from "@/src/components/splash-screen/SplashScreen.tsx"
+import { FullScreenLoader } from "@/src/components/loaders/FullScreenLoader.tsx"
 
 export const MainLayout = () => {
 	const { isLoading } = useConvexAuth()
@@ -16,7 +17,7 @@ export const MainLayout = () => {
 	return (
 		<>
 			<Navbar />
-			<Suspense>
+			<Suspense fallback={<FullScreenLoader />}>
 				<Outlet />
 			</Suspense>
 		</>

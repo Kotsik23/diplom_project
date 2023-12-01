@@ -10,6 +10,7 @@ import { MainLayout } from "@/src/components/layouts/MainLayout.tsx"
 // Lazy Pages
 const AboutUs = lazy(() => import("@/src/pages/AboutUs"))
 const Explore = lazy(() => import("@/src/pages/Explore"))
+const Author = lazy(() => import("@/src/pages/Author"))
 
 import { ROUTE } from "@/src/lib/routes.ts"
 
@@ -23,6 +24,8 @@ export const Routing = () => {
 
 						<Route path={ROUTE.ABOUT_US} element={<AboutUs />} />
 						<Route path={ROUTE.EXPLORE} element={<Explore />} />
+
+						<Route path={`${ROUTE.AUTHOR}/:id`} element={<Author />} />
 					</Route>
 				</Routes>
 			</QueryParamProvider>

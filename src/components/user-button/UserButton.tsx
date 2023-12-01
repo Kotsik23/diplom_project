@@ -11,11 +11,19 @@ import {
 	DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu.tsx"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar.tsx"
+import { useConvex } from "convex/react"
+import { api } from "@/convex/_generated/api"
+import { useNavigate } from "react-router-dom"
+import { ConvexError } from "convex/values"
+import { ROUTE } from "@/src/lib/routes.ts"
 
 export const UserButton = () => {
+	const convex = useConvex()
 	const { user, isSignedIn } = useUser()
 	const { signOut } = useAuth()
 	const { openUserProfile } = useClerk()
+
+	const navigate = useNavigate()
 
 	const handleSignOut = async () => {
 		const promise = signOut()
@@ -24,6 +32,29 @@ export const UserButton = () => {
 			success: "You have been signed out",
 			error: "Error while signing out",
 		})
+	}
+
+	const handleAuthorCreate = async () => {
+		if (!user) {
+			toast.warning("Unauthenticated")
+			return
+		}
+		const authorExists = await convex.query(api.author.getByUserId, { userId: user.id })
+		if (!authorExists) {
+			const newAuthorPromise = convex.mutation(api.author.create, { userId: user.id })
+			toast.promise(newAuthorPromise, {
+				loading: "Creating author for you...",
+				success: data => {
+					navigate(ROUTE.AUTHOR + `/${data}`)
+					return "Now you are a author :)"
+				},
+				error: e => {
+					return e instanceof ConvexError ? e.data : "Unexpected error occurred"
+				},
+			})
+		} else {
+			navigate(ROUTE.AUTHOR + `/${authorExists._id}`)
+		}
 	}
 
 	if (!isSignedIn || !user) {
@@ -47,7 +78,7 @@ export const UserButton = () => {
 			<DropdownMenuContent className={"w-52"} align={"end"}>
 				<DropdownMenuLabel className={"capitalize"}>My Account</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem>
+				<DropdownMenuItem onClick={handleAuthorCreate}>
 					<LightbulbIcon className={"mr-2 h-5 w-5"} />
 					<span>Author</span>
 				</DropdownMenuItem>

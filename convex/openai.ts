@@ -10,7 +10,7 @@ const openai = new OpenAI({
 
 export const aboutYourselfCompletion = action({
 	args: {},
-	handler: async (ctx, args) => {
+	handler: async ctx => {
 		const identity = await ctx.auth.getUserIdentity()
 		if (!identity) {
 			throw new ConvexError("Unauthenticated")
