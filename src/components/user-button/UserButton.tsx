@@ -1,33 +1,21 @@
 import { LightbulbIcon, LogOutIcon, SettingsIcon } from "lucide-react"
-import { dark } from "@clerk/themes"
 import { useAuth, useClerk, useUser } from "@clerk/clerk-react"
 import { toast } from "sonner"
 
 import {
 	DropdownMenu,
-	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
+	DropdownMenuTrigger,
 } from "@/src/components/ui/dropdown-menu.tsx"
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar.tsx"
-import { useTheme } from "@/src/app/providers/ThemeProvider.tsx"
 
 export const UserButton = () => {
 	const { user, isSignedIn } = useUser()
 	const { signOut } = useAuth()
 	const { openUserProfile } = useClerk()
-	const { theme } = useTheme()
-
-	const handleOpenUserProfile = () => {
-		const profileTheme = theme === "dark" ? dark : undefined
-		openUserProfile({
-			appearance: {
-				baseTheme: profileTheme,
-			},
-		})
-	}
 
 	const handleSignOut = async () => {
 		const promise = signOut()
@@ -47,7 +35,7 @@ export const UserButton = () => {
 			<DropdownMenuTrigger asChild>
 				<Avatar
 					className={
-						"cursor-pointer transition-shadow hover:ring-2 hover:ring-ring hover:ring-offset-2"
+						"cursor-pointer ring-offset-background transition-shadow hover:ring-2 hover:ring-ring hover:ring-offset-2"
 					}
 				>
 					<AvatarImage src={user.imageUrl} alt={user.emailAddresses[0].emailAddress} />
@@ -63,7 +51,7 @@ export const UserButton = () => {
 					<LightbulbIcon className={"mr-2 h-5 w-5"} />
 					<span>Author</span>
 				</DropdownMenuItem>
-				<DropdownMenuItem onClick={handleOpenUserProfile}>
+				<DropdownMenuItem onClick={() => openUserProfile()}>
 					<SettingsIcon className={"mr-2 h-5 w-5"} />
 					<span>Settings</span>
 				</DropdownMenuItem>

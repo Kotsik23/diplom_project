@@ -1,7 +1,8 @@
 import { MenuIcon } from "lucide-react"
 import { Link, NavLink } from "react-router-dom"
 
-import LogoLight from "@/src/assets/logo_light.svg"
+import LogoLight from "/logo_light.svg"
+import LogoDark from "/logo_dark.svg"
 
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/src/components/ui/sheet.tsx"
 import { Button, buttonVariants } from "@/src/components/ui/button.tsx"
@@ -23,7 +24,8 @@ export const MobileMenu = () => {
 			<SheetContent side={"left"}>
 				<SheetHeader>
 					<Link to={ROUTE.HOME} className={"max-w-[12rem]"} onClick={onClose}>
-						<img alt={"sheet-logo"} src={LogoLight} className={"w-full"} />
+						<img alt={"sheet-logo"} src={LogoLight} className={"block w-full dark:hidden"} />
+						<img alt={"sheet-logo"} src={LogoDark} className={"hidden w-full dark:block"} />
 					</Link>
 				</SheetHeader>
 				<nav className={"mt-10"}>

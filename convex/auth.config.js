@@ -1,7 +1,7 @@
 export default {
 	providers: [
 		{
-			domain: "https://desired-mantis-53.clerk.accounts.dev",
+			domain: "https://destined-kitten-94.clerk.accounts.dev",
 			applicationID: "convex",
 		},
 	],

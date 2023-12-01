@@ -1,5 +1,5 @@
-import LogoLight from "@/src/assets/logo_light.svg"
-import LogoDark from "@/src/assets/logo_dark.svg"
+import LogoLight from "/logo_light.svg"
+import LogoDark from "/logo_dark.svg"
 import { cn } from "@/src/lib/utils.ts"
 
 export const SplashScreen = () => {

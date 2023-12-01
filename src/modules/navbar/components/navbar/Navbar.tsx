@@ -2,8 +2,8 @@ import { Link, NavLink } from "react-router-dom"
 import { SignUpButton } from "@clerk/clerk-react"
 import { Authenticated, Unauthenticated } from "convex/react"
 
-import LogoLight from "@/src/assets/logo_light.svg"
-import LogoDark from "@/src/assets/logo_dark.svg"
+import LogoLight from "/logo_light.svg"
+import LogoDark from "/logo_dark.svg"
 
 import { navbarData } from "@/src/modules/navbar/constants/navbar-data.ts"
 
